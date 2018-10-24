@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="planet1.Controls.ProcessDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:planet1.Controls"
+             xmlns:ViewModels="clr-namespace:planet1.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="250">
+
+    <Grid DataContext="{Binding RelativeSource={RelativeSource self}}">
+        <Button Content="Monitor" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Kill" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75"/>
+        <StackPanel HorizontalAlignment="Left" Height="100" Margin="10,60,0,0" VerticalAlignment="Top" Width="230">
+            <DockPanel Height="100" LastChildFill="False">
+                <Label Content="Id"/>
+                <Label Content="{Binding Value}"/>
+            </DockPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

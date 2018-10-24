@@ -1,0 +1,36 @@
+﻿<Window x:Class="planet1.Views.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:planet1.Views"
+        xmlns:Views="clr-namespace:planet1.Views"
+        xmlns:ViewModels="clr-namespace:planet1.ViewModels"
+        xmlns:controls="clr-namespace:planet1.Controls"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance ViewModels:MainViewModel}"
+        Title="Main" Height="450" Width="800">
+
+    <Window.DataContext>
+        <ViewModels:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid DataContext="{Binding Processes}">
+        <DataGrid HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="480"
+                    ItemsSource="{Binding}" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True"
+                    DisplayMemberPath="Name">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="ProcessName" Binding="{Binding ProcessName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox HorizontalAlignment="Left" Margin="589,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="{Binding Id}" HorizontalAlignment="Left" Margin="495,60,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ProcessName}" HorizontalAlignment="Left" Margin="495,91,0,0" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="495,122,0,0" VerticalAlignment="Top"/>
+        <Button Content="Kill" Height="20" VerticalAlignment="Top" Width="76" Margin="495,10,221,0"
+            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.KillProcessCommand}"
+            CommandParameter="{Binding Id}"/>
+        <Button Content="Change priority" Height="20" VerticalAlignment="Top" Margin="495,35,208,0"/>
+    </Grid>
+</Window>
